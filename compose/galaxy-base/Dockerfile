@@ -6,9 +6,6 @@ FROM ubuntu:14.04
 
 MAINTAINER Björn A. Grüning, bjoern.gruening@gmail.com
 
-ARG ANSIBLE_REPO=galaxyproject/ansible-galaxy-extras
-ARG ANSIBLE_RELEASE=18.01
-
 ENV DEBIAN_FRONTEND=noninteractive \
 GALAXY_USER=galaxy \
 GALAXY_UID=1450 \
@@ -97,6 +94,10 @@ ADD ./bashrc $GALAXY_HOME/.bashrc
 # Container Style
 ADD condor_config.local /etc/condor/condor_config.local
 # fetch ansible galaxy extras
+
+ARG ANSIBLE_REPO=galaxyproject/ansible-galaxy-extras
+ARG ANSIBLE_RELEASE=18.01
+
 RUN mkdir -p /ansible/galaxyprojectdotorg.galaxyextras && cd /ansible/galaxyprojectdotorg.galaxyextras && wget -pO- https://api.github.com/repos/$ANSIBLE_REPO/tarball/$ANSIBLE_RELEASE | tar xvz --strip-components=1
 ADD provision.yml /ansible/provision.yml
 
