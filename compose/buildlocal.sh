@@ -2,16 +2,16 @@
 set -x -e
 
 ANSIBLE_REPO=galaxyproject/ansible-galaxy-extras
-ANSIBLE_RELEASE=master
+ANSIBLE_RELEASE=14c60b66f10326c7d158627b004d58e38ca503e4
 
-GALAXY_RELEASE=release_18.01
+GALAXY_RELEASE=release_18.05
 GALAXY_REPO=galaxyproject/galaxy
 
 DOCKER_ADDITIONAL_BUILD_ARGS=""
 #"--no-cache"
 
 # For using latest simply leave this variable empty or set to ":latest". This should be the case on the master branch.
-TAG=":18.01"
+TAG=":18.05"
 
 docker pull postgres
 
